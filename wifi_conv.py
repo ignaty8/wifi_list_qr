@@ -1,4 +1,5 @@
 import csv, sys
+import subprocess
 
 conv_csv = []
 with open(sys.argv[1], newline='') as csvfile:
@@ -16,5 +17,6 @@ with open(sys.argv[1], newline='') as csvfile:
         body = "S:" + line[0] + ";"
         conv_csv.append(header+body+passwd+";")
 
-print(conv_csv)
+for qr in conv_csv[1:]:
+    subprocess.run(["qr", qr]) 
         
